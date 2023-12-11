@@ -2,5 +2,11 @@
 <div class="site-content container mx-auto p-5 mt-5">
     <h1>{{.Title | safeHTML}}</h1>
     {{.Content | safeHTML}}
+    <h2>List of Pages</h2>
+    <ul>
+        {{ range .Pages }}
+        {{ partial "recursive_list" . }}
+        {{ end }}
+    </ul>
 </div>
 {{ end }}
