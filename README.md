@@ -2,9 +2,9 @@
 
 This is the official website for Bornais Music, built using Hugo.
 
-*Music is life, freedom, happiness.*
-
 ![Bornais Music Logo](/static/logo.png)
+
+*Music is life, freedom, happiness.*
 
 ## Setting up the Environment
 ### Installing Dependencies
