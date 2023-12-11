@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bornais Music</title>
+    <title>&lt;img class=&#34;logo&#34; src=&#34;https://example.org/logo.png&#34;&gt; on Bornais Music</title>
     <link>https://example.org/</link>
-    <description>Recent content on Bornais Music</description>
+    <description>Recent content in &lt;img class=&#34;logo&#34; src=&#34;https://example.org/logo.png&#34;&gt; on Bornais Music</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 10 Dec 2023 13:48:05 -0500</lastBuildDate><atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml" />
