@@ -3,10 +3,10 @@
     <h1>{{.Title | safeHTML}}</h1>
     {{.Content | safeHTML}}
     <h2>List of Pages</h2>
-    <ul>
+    <div class="pages">
         {{ range .Pages }}
             {{ partial "recursive_list" . }}
         {{ end }}
-    </ul>
+    </div>
 </div>
 {{ end }}

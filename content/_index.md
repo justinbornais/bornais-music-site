@@ -3,6 +3,8 @@ title = '<img class="logo" src="/logo.png">'
 date = 2023-12-10T13:48:05-05:00
 +++
 
+<img src="/images/piano-portrait.jpg" class="right">
+
 My name is Justin Bornais, and one of my greatest passions is music! Some of the instruments I play are piano, trumpet, guitar, euphonium and saxophone, but my main focus is piano. I have been playing musical instruments since 2010.
 
 I am a piano teacher, and have been for {{< teacher >}} years now. I currently have 12 students, and I have taught students aged 4 years old to senior age. My goal is to increase the number of students I have and teach other instruments like guitar, trumpet, and baritone horn.

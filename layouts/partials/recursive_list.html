@@ -1,10 +1,10 @@
 <li>
     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     {{ with .Pages }}
-      <ul>
-        {{ range . }}
-          {{ partial "recursive_list" . }}
-        {{ end }}
-      </ul>
+        <div class="pages">
+            {{ range . }}
+                {{ partial "recursive_list" . }}
+            {{ end }}
+        </div>
     {{ end }}
 </li>
