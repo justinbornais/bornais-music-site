@@ -7,5 +7,22 @@ export default defineConfig({
     react(),
     tailwind(),
   ],
-  site: 'https://bornaismusic.com',
+  
+  // =============================================================================
+  // DEPLOYMENT CONFIGURATION
+  // =============================================================================
+  // 
+  // For GitHub Pages (username.github.io/repo-name):
+  //   site: 'https://username.github.io'
+  //   base: '/repo-name'
+  //
+  // For custom domain (e.g., bornaismusic.com):
+  //   site: 'https://bornaismusic.com'
+  //   base: '/'  (or remove the base property entirely)
+  //
+  // For local development, these settings don't affect `npm run dev`.
+  // =============================================================================
+  
+  site: 'https://justinbornais.github.io',
+  base: '/bornais-music-site',
 });
