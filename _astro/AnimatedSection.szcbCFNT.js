@@ -1,0 +1,1 @@
+import{j as o,m as e}from"./proxy.DHLf-GYR.js";function r({children:i,className:t="",delay:n=0}){return o.jsx(e.div,{initial:{opacity:0,y:40},whileInView:{opacity:1,y:0},viewport:{once:!0,margin:"-100px"},transition:{duration:.7,delay:n,ease:[.25,.46,.45,.94]},className:t,children:i})}export{r as A};

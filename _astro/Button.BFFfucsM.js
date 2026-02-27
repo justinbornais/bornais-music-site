@@ -1,0 +1,1 @@
+import{m as o,j as p}from"./proxy.DHLf-GYR.js";function u({children:n,variant:s="primary",href:t,onClick:a,className:i="",type:r="button"}){const e=s==="primary"?"btn-primary":"btn-secondary",m=t?o.a:o.button;return p.jsx(m,{href:t,onClick:a,type:t?void 0:r,className:`${e} ${i}`,whileHover:{scale:1.02},whileTap:{scale:.98},transition:{duration:.2},children:n})}export{u as B};
