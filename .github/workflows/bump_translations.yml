@@ -1,0 +1,25 @@
+name: Bump Translations
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * 0'
+
+
+jobs:
+  Update_translations:
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: tessonics/action-bump-submodule/.github/workflows/bump-submodule.yml@v1
+    with:
+      title: Bump Translations
+      commit-message: Bump translations
+      body: |
+        This PR updates the [tds-translation](https://github.com/tessonics/tds-translation/) to the current main
+      branch:
+        bump-translations-submodule
+      submodules: |
+        ext/translation
+    secrets:
+        app-id: ${{ vars.APP_CLIENT_ID }}
+        private-key: ${{ secrets.RSWA_CICD_APP_PRIV_KEY }}

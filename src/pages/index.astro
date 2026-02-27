@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+
+import { Navbar } from '../components/Navbar';
+import { Hero } from '../components/Hero';
+import { About } from '../components/About';
+import { Services } from '../components/Services';
+import { Gallery } from '../components/Gallery';
+import { AudioSamples } from '../components/AudioSamples';
+import { Testimonials } from '../components/Testimonials';
+import { Pricing } from '../components/Pricing';
+import { FAQ } from '../components/FAQ';
+import { Contact } from '../components/Contact';
+import { Footer } from '../components/Footer';
+---
+
+<Layout>
+  <Navbar client:load />
+  <main>
+    <Hero client:load />
+    <About client:visible />
+    <Services client:visible />
+    <Gallery client:visible />
+    <AudioSamples client:visible />
+    <Testimonials client:visible />
+    <Pricing client:visible />
+    <FAQ client:visible />
+    <Contact client:visible />
+  </main>
+  <Footer client:visible />
+</Layout>

@@ -1,0 +1,36 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = 'Bornais Music | Pianist & Performer',
+  description = 'Justin Bornais - Professional pianist, organist, and performer for weddings, funerals, church services, and special events in Windsor-Essex.'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/logo.png" />
+    
+    <title>{title}</title>
+  </head>
+  <body class="overflow-x-hidden">
+    <slot />
+  </body>
+</html>

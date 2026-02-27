@@ -1,0 +1,150 @@
+name: rswav4_build_machine
+
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - 'master'
+    tags:
+        - v*
+  pull_request:
+    branches: [ 'master' ]
+  release:
+      types: [created]
+
+permissions:
+  contents: write
+  
+env:
+  GOPRIVATE: github.com/tessonics  
+  CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION: ""
+  CMAKE_VS_PRODUCTS: ""
+  CMAKE_VS_VERSION_RANGE: ""
+
+jobs:
+  build:
+    runs-on: [self-hosted, Windows, 'v1']
+
+    steps:
+    - name: Generate a token
+      id: generate-token
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ vars.APP_CLIENT_ID }}
+        private-key: ${{ secrets.RSWA_CICD_APP_PRIV_KEY }}
+        owner: ${{ github.repository_owner }}
+      
+    - uses: actions/checkout@v4
+      with:
+        lfs: 'true'
+        submodules: 'recursive'
+        fetch-tags: true
+        fetch-depth: 0
+        token: ${{ steps.generate-token.outputs.token }}
+        persist-credentials: false
+
+    - name: Build RSWAv4
+      working-directory: ./rswa-gui
+      run: ./build_rswa.bat
+
+    - name: upload rswa-build
+      uses: "actions/upload-artifact@v4"
+      with:
+        name: rswa-array-explorer
+        path: |
+          rswa-gui/bin
+        # delete after retention to not clutter our GH storage (max 90 days)
+        # approx size per upload: ~30MB
+        retention-days: 15
+        if-no-files-found: error
+
+    - name: Build Desktop Tools
+      working-directory: ./desktop-tools
+      run: ./build_desktoptools.bat
+
+    - name: upload desktop tools build
+      uses: "actions/upload-artifact@v4"
+      with:
+        name: rswa-desktop-tools
+        path: |
+          desktop-tools/bin
+        # delete after retention to not clutter our GH storage (max 90 days)
+        # approx size per upload: ~30MB
+        retention-days: 15
+        if-no-files-found: error
+
+    - name: Build v3->v4 Importer
+      working-directory: ./v3-uploaders/v3-data-importer
+      run: ./build_importer.bat
+
+    - name: upload v3->v4 importer build
+      uses: "actions/upload-artifact@v4"
+      with:
+        name: v3-v4-importer
+        path: |
+          v3-uploaders/v3-data-importer/bin
+        # delete after retention to not clutter our GH storage (max 90 days)
+        # approx size per upload: ~30MB
+        retention-days: 15
+        if-no-files-found: error
+
+    - name: Listing build dir # allows for debugging file path issues
+      run: |
+        ls rswa-gui/bin
+
+  stage:
+    runs-on: [self-hosted, Windows, 'v1']
+    needs: build
+    # only run this, when it's part of a version tag, e.g. v1.2.3
+    if: startsWith(github.ref , 'refs/tags/v') && !contains(github.ref, 'alpha')
+
+    steps:
+      
+    - name: Generate a token
+      id: generate-token
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ vars.APP_CLIENT_ID }}
+        private-key: ${{ secrets.RSWA_CICD_APP_PRIV_KEY }}
+        owner: ${{ github.repository_owner }}
+
+    - uses: actions/checkout@v4
+      with:
+        lfs: 'true'
+        submodules: 'recursive'
+        fetch-tags: true
+        fetch-depth: 0
+        token: ${{ steps.generate-token.outputs.token }}
+        persist-credentials: false
+
+    - name: update global git config with token
+      run: |
+        git config --global url."https://${{ github.repository_owner }}:${{ steps.generate-token.outputs.token }}@github.com/".insteadOf "https://github.com/"
+
+    - name: "Build + Package installer"
+      run: |
+        go run ./stage
+
+    - name: remove auth token from global git config
+      if: always()
+      run: |
+        git config --global --unset url."https://${{ github.repository_owner }}:${{ steps.generate-token.outputs.token }}@github.com/".insteadOf
+
+    - uses: "actions/upload-artifact@v4"
+      with:
+        name: rswa-installer-build
+        path: .staging/.deploy/signed
+        # delete after retention to not clutter our GH storage (max 90 days)
+        retention-days: 30
+        if-no-files-found: error
+        include-hidden-files: true
+
+  upload_to_release:
+    needs: [stage]
+    uses: tessonics/action-upload-release/.github/workflows/release.yml@v1.0.1
+    if: github.event_name == 'release' || (startsWith(github.ref, 'refs/tags/v') && (contains(github.ref, '-rc') || !contains(github.ref, '-')))
+    with:
+      artifact_name: rswa-installer-build
+      wildcards: .exe
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
