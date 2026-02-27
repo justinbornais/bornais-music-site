@@ -4,6 +4,7 @@ import { FaPlay, FaPause, FaMusic } from 'react-icons/fa';
 import { audioTracks } from '../data/audio';
 import { AnimatedSection } from './ui/AnimatedSection';
 import { SectionHeading } from './ui/SectionHeading';
+import { assetUrl } from '../utils/assets';
 
 export function AudioSamples() {
   const [playingId, setPlayingId] = useState<string | null>(null);
@@ -100,7 +101,7 @@ export function AudioSamples() {
                 {/* Hidden Audio Element */}
                 <audio
                   ref={(el) => { audioRefs.current[track.id] = el; }}
-                  src={track.src}
+                  src={track.src ? assetUrl(track.src) : undefined}
                   onEnded={() => setPlayingId(null)}
                 />
               </motion.div>

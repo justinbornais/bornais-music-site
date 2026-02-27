@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { AnimatedSection } from './ui/AnimatedSection';
 import { SectionHeading } from './ui/SectionHeading';
+import { assetUrl } from '../utils/assets';
 
 export function About() {
   return (
@@ -20,7 +21,7 @@ export function About() {
                 transition={{ duration: 0.4 }}
               >
                 <img 
-                  src="/images/piano-portrait.jpg" 
+                  src={assetUrl('/images/piano-portrait.jpg')} 
                   alt="Justin Bornais at the piano"
                   className="w-full h-auto object-cover"
                 />

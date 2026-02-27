@@ -8,6 +8,9 @@ const {
   title = 'Bornais Music | Pianist & Performer',
   description = 'Justin Bornais - Professional pianist, organist, and performer for weddings, funerals, church services, and special events in Windsor-Essex.'
 } = Astro.props;
+
+// Get base URL for assets (automatically set from astro.config.mjs)
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!doctype html>
@@ -19,14 +22,14 @@ const {
     <meta name="generator" content={Astro.generator} />
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/icon.png" />
-    <link rel="apple-touch-icon" href="/icon.png" />
+    <link rel="icon" type="image/png" href={`${base}/icon.png`} />
+    <link rel="apple-touch-icon" href={`${base}/icon.png`} />
     
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/logo.png" />
+    <meta property="og:image" content={`${base}/logo.png`} />
     
     <title>{title}</title>
   </head>

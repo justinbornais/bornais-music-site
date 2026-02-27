@@ -4,6 +4,7 @@ import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { galleryItems } from '../data/gallery';
 import { AnimatedSection } from './ui/AnimatedSection';
 import { SectionHeading } from './ui/SectionHeading';
+import { assetUrl } from '../utils/assets';
 
 export function Gallery() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -42,7 +43,7 @@ export function Gallery() {
                 transition={{ duration: 0.3 }}
               >
                 <img 
-                  src={item.src}
+                  src={assetUrl(item.src)}
                   alt={item.alt}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   onError={(e) => {
@@ -113,7 +114,7 @@ export function Gallery() {
               className="max-w-4xl max-h-[80vh]"
             >
               <img 
-                src={galleryItems[selectedIndex].src}
+                src={assetUrl(galleryItems[selectedIndex].src)}
                 alt={galleryItems[selectedIndex].alt}
                 className="max-w-full max-h-[80vh] object-contain rounded-sm"
                 onError={(e) => {

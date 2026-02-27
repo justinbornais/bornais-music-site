@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaYoutube, FaHeart } from 'react-icons/fa';
 import { navLinks, contactInfo } from '../data/navigation';
+import { assetUrl } from '../utils/assets';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -19,7 +20,7 @@ export function Footer() {
           <div>
             <a href="#home" className="flex items-center gap-3 mb-4 group">
               <img 
-                src="/icon.png" 
+                src={assetUrl('/icon.png')} 
                 alt="Bornais Music" 
                 className="h-10 w-auto"
               />

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { navLinks } from '../data/navigation';
+import { assetUrl } from '../utils/assets';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +41,7 @@ export function Navbar() {
             onClick={handleLinkClick}
           >
             <img 
-              src="/icon-dark.png" 
+              src={assetUrl('/icon-dark.png')} 
               alt="Bornais Music" 
               className="h-10 w-auto"
             />

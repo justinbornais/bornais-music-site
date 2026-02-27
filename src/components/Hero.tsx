@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Button } from './ui/Button';
 import { FloatingNotes } from './FloatingNotes';
+import { cssUrl } from '../utils/assets';
 
 export function Hero() {
   return (
@@ -12,7 +13,7 @@ export function Hero() {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url(/images/piano-portrait.jpg)',
+          backgroundImage: cssUrl('/images/piano-portrait.jpg'),
         }}
       >
         {/* Overlay */}
