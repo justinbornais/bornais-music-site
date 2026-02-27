@@ -95,7 +95,9 @@ export function Pricing() {
           <p className="text-center text-primary/60 text-sm mt-10 max-w-2xl mx-auto">
             All packages include a consultation to discuss your specific needs. 
             Travel fees may apply for locations outside the Windsor-Essex region. 
-            A 25% deposit is required to secure your booking.
+            Full payment is required at least one week prior to the event date.
+            Payment is acceptable via e-transfer, cheque, or cash.
+            Custom packages are available upon request.
           </p>
         </AnimatedSection>
       </div>

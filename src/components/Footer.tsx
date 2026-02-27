@@ -9,7 +9,7 @@ export function Footer() {
   const socialLinks = [
     { icon: FaFacebook, href: contactInfo.social.facebook, label: 'Facebook' },
     { icon: FaInstagram, href: contactInfo.social.instagram, label: 'Instagram' },
-    { icon: FaYoutube, href: contactInfo.social.youtube, label: 'YouTube' },
+    // { icon: FaYoutube, href: contactInfo.social.youtube, label: 'YouTube' },
   ];
 
   return (

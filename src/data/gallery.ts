@@ -13,7 +13,7 @@ export const galleryItems: GalleryItem[] = [
     type: 'image',
     src: '/images/piano-portrait.jpg',
     alt: 'Justin at the piano',
-    caption: 'Performance at Artisan Grill, Amherstburg',
+    caption: 'Me playing on my baby grand piano',
   },
   {
     id: '2',

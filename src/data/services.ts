@@ -13,12 +13,11 @@ export const services: Service[] = [
   {
     id: 'weddings',
     title: 'Weddings',
-    description: 'Create unforgettable moments with elegant piano music for your ceremony and reception.',
+    description: 'Create unforgettable moments with elegant piano music for your wedding ceremony.',
     icon: FaRing,
     features: [
       'Ceremony prelude & processional',
       'Custom song arrangements',
-      'Reception background music',
       'Cocktail hour entertainment',
     ],
   },
@@ -31,7 +30,6 @@ export const services: Service[] = [
       'Traditional hymns',
       'Contemporary selections',
       'Personalized tributes',
-      'Graveside services',
     ],
   },
   {
@@ -40,9 +38,9 @@ export const services: Service[] = [
     description: 'Enhance your worship experience with skilled piano and organ accompaniment.',
     icon: FaChurch,
     features: [
-      'Sunday services',
-      'Holiday masses',
+      'Sunday Masses',
       'Choir accompaniment',
+      'Holiday Masses',
       'Special liturgies',
     ],
   },

@@ -16,8 +16,8 @@ export const navLinks: NavLink[] = [
 ];
 
 export const contactInfo = {
-  email: 'justin@bornaismusic.com',
-  phone: '(519) 555-0123',
+  email: 'bornaismusic@gmail.com',
+  phone: '(226) 346 - 1753',
   location: 'Windsor-Essex, Ontario',
   googleFormUrl: 'https://forms.google.com/your-form-id',
   social: {

@@ -45,7 +45,7 @@ export function About() {
                 <p className="text-lg">
                   My name is <span className="text-accent font-semibold">Justin Bornais</span>, 
                   and music has been my greatest passion since I began playing instruments in 2010. 
-                  While I am proficient in trumpet, guitar, euphonium, and saxophone, my heart 
+                  While I am proficient in guitar and can dabble with the trumpet, and violin, my heart 
                   belongs to the piano and organ.
                 </p>
 
