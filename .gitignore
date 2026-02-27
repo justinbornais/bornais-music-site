@@ -23,6 +23,3 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
-
-# Hugo backup (can be removed after migration is complete)
-_hugo_backup/
