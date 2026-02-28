@@ -21,7 +21,7 @@ export function About() {
                 transition={{ duration: 0.4 }}
               >
                 <img 
-                  src={assetUrl('/images/piano-portrait.jpg')} 
+                  src={assetUrl('/images/2021-piano-portrait.jpg')} 
                   alt="Justin Bornais at the piano"
                   className="w-full h-auto object-cover"
                 />

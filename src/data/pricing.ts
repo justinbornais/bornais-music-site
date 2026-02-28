@@ -10,6 +10,20 @@ export interface PricingPackage {
 
 export const pricingPackages: PricingPackage[] = [
   {
+    id: 'event',
+    name: 'Event',
+    price: 'Starting at $200',
+    description: 'Ideal for corporate events, galas and private parties',
+    features: [
+      '$200 flat fee for up to 2 hours',
+      'Additional time priced at $100/hour',
+      'Live performance',
+      'Customizable setlist',
+      'Phone consultation',
+    ],
+    ctaText: 'Book Event',
+  },
+  {
     id: 'ceremony',
     name: 'Ceremony',
     price: '$250',

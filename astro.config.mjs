@@ -24,5 +24,5 @@ export default defineConfig({
   // =============================================================================
   
   site: 'https://justinbornais.github.io',
-  base: '/bornais-music-site',
+  base: '/',
 });
