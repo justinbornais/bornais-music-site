@@ -33,45 +33,50 @@ export function Pricing() {
                   </div>
                 )}
 
-                {/* Package Name */}
-                <h3 className={`text-xl font-heading font-semibold mb-2 ${
-                  pkg.highlighted ? 'text-white' : 'text-primary'
-                }`}>
-                  {pkg.name}
-                </h3>
-
-                {/* Price */}
-                <div className="mb-4">
-                  <span className={`text-4xl font-heading font-bold ${
-                    pkg.highlighted ? 'text-accent-light' : 'text-accent'
+                {/* Card Content with min-h for desktop */}
+                <div className="flex flex-col flex-1 md:min-h-[420px]">
+                  {/* Package Name */}
+                  <h3 className={`text-xl font-heading font-semibold mb-2 ${
+                    pkg.highlighted ? 'text-white' : 'text-primary'
                   }`}>
-                    {pkg.price}
-                  </span>
+                    {pkg.name}
+                  </h3>
+
+                  {/* Price */}
+                  <div className="mb-4">
+                    <span className={`text-3xl font-heading font-bold ${
+                      pkg.highlighted ? 'text-accent-light' : 'text-accent'
+                    }`}>
+                      {pkg.price}
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <p className={`text-sm mb-6 ${
+                    pkg.highlighted ? 'text-white/80' : 'text-primary/70'
+                  }`}>
+                    {pkg.description}
+                  </p>
+
+                  {/* Features aligned across cards */}
+                  <div className="flex-1 flex items-start">
+                    <ul className="space-y-3 mb-4 w-full md:min-h-[120px]">
+                      {pkg.features.map((feature, i) => (
+                        <li 
+                          key={i}
+                          className={`flex items-start gap-3 text-sm ${
+                            pkg.highlighted ? 'text-white/90' : 'text-primary/80'
+                          }`}
+                        >
+                          <FaCheck className={`flex-shrink-0 mt-0.5 ${
+                            pkg.highlighted ? 'text-accent-light' : 'text-accent'
+                          }`} size={14} />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-
-                {/* Description */}
-                <p className={`text-sm mb-6 ${
-                  pkg.highlighted ? 'text-white/80' : 'text-primary/70'
-                }`}>
-                  {pkg.description}
-                </p>
-
-                {/* Features */}
-                <ul className="space-y-3 mb-8">
-                  {pkg.features.map((feature, i) => (
-                    <li 
-                      key={i}
-                      className={`flex items-start gap-3 text-sm ${
-                        pkg.highlighted ? 'text-white/90' : 'text-primary/80'
-                      }`}
-                    >
-                      <FaCheck className={`flex-shrink-0 mt-0.5 ${
-                        pkg.highlighted ? 'text-accent-light' : 'text-accent'
-                      }`} size={14} />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
 
                 {/* CTA Button */}
                 <Button 
