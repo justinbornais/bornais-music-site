@@ -13,7 +13,7 @@ export function Hero() {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: cssUrl('/images/piano-portrait.jpg'),
+          backgroundImage: cssUrl('/images/piano-portrait.webp'),
         }}
       >
         {/* Overlay */}

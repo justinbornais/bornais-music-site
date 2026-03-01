@@ -21,15 +21,15 @@ export function getBaseUrl(): string {
 /**
  * Prepend the base URL to an asset path.
  * 
- * @param path - The asset path starting with '/' (e.g., '/images/photo.jpg')
+ * @param path - The asset path starting with '/' (e.g., '/images/photo.webp')
  * @returns The full URL with base path prepended
  * 
  * @example
  * // With base: '/bornais-music-site'
- * assetUrl('/images/photo.jpg') // => '/bornais-music-site/images/photo.jpg'
+ * assetUrl('/images/photo.webp') // => '/bornais-music-site/images/photo.webp'
  * 
  * // With base: '/'
- * assetUrl('/images/photo.jpg') // => '/images/photo.jpg'
+ * assetUrl('/images/photo.webp') // => '/images/photo.webp'
  */
 export function assetUrl(path: string): string {
   const base = getBaseUrl();
@@ -41,11 +41,11 @@ export function assetUrl(path: string): string {
 /**
  * Create a CSS url() value with the correct base path.
  * 
- * @param path - The asset path starting with '/' (e.g., '/images/bg.jpg')
+ * @param path - The asset path starting with '/' (e.g., '/images/bg.webp')
  * @returns A CSS url() string ready for use in style objects
  * 
  * @example
- * cssUrl('/images/bg.jpg') // => 'url(/bornais-music-site/images/bg.jpg)'
+ * cssUrl('/images/bg.webp') // => 'url(/bornais-music-site/images/bg.webp)'
  */
 export function cssUrl(path: string): string {
   return `url(${assetUrl(path)})`;
