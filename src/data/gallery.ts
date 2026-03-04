@@ -48,6 +48,6 @@ export const galleryItems: GalleryItem[] = [
     type: 'image',
     src: '/images/2021-piano-portrait.webp',
     alt: 'Piano portrait',
-    caption: 'Practicing on my personal grabd piano',
+    caption: 'Practicing on my personal grand piano',
   }
 ];
