@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const baseNotes = [
   { char: '♪', size: 'text-2xl', delayOffset: 0, duration: 8 },
@@ -21,8 +21,15 @@ type Note = {
 export function FloatingNotes({ multiplier = 4 }: { multiplier?: number }) {
   const [notes, setNotes] = useState<Note[]>([]);
 
+  // Easter-egg override state and timer
+  const [overrideActive, setOverrideActive] = useState(false);
+  const timerRef = useRef<number | null>(null);
+  const keyBufferRef = useRef('');
+  const sequence = 'music';
+
   useEffect(() => {
-    const total = baseNotes.length * Math.max(1, Math.floor(multiplier));
+    const effectiveMultiplier = overrideActive ? 100 : multiplier;
+    const total = baseNotes.length * Math.max(1, Math.floor(effectiveMultiplier));
     const generated: Note[] = [];
 
     for (let i = 0; i < total; i++) {
@@ -45,7 +52,37 @@ export function FloatingNotes({ multiplier = 4 }: { multiplier?: number }) {
     }
 
     setNotes(generated);
-  }, [multiplier]);
+  }, [multiplier, overrideActive]);
+
+  // Keyboard listener to detect sequence: M U S I C
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      const k = e.key.toLowerCase();
+      // Only consider single-character keys (letters)
+      if (k.length !== 1) return;
+
+      keyBufferRef.current = (keyBufferRef.current + k).slice(-sequence.length);
+
+      if (keyBufferRef.current === sequence) {
+        // Activate override
+        setOverrideActive(true);
+        if (timerRef.current) window.clearTimeout(timerRef.current);
+        // Deactivate after 10 seconds
+        timerRef.current = window.setTimeout(() => {
+          setOverrideActive(false);
+          timerRef.current = null;
+        }, 10000) as unknown as number;
+        // clear buffer so repeated typing requires retyping sequence
+        keyBufferRef.current = '';
+      }
+    }
+
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+    };
+  }, []);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -57,7 +94,7 @@ export function FloatingNotes({ multiplier = 4 }: { multiplier?: number }) {
           initial={{ y: '100vh', opacity: 0, rotate: 0 }}
           animate={{
             y: '-100px',
-            opacity: [0, 0.8, 0.8, 0],
+            opacity: [0, 0.6, 0.6, 0],
             rotate: [0, 15, -15, 0],
           }}
           transition={{
