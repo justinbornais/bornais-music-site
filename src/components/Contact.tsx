@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaExternalLinkAlt } from 'react-icons/fa';
 import { contactInfo } from '../data/navigation';
 import { AnimatedSection } from './ui/AnimatedSection';
 import { SectionHeading } from './ui/SectionHeading';
@@ -38,20 +38,6 @@ export function Contact() {
                       </div>
                     </motion.a>
 
-                    <motion.a 
-                      href={`tel:${contactInfo.phone.replace(/[^0-9]/g, '')}`}
-                      className="flex items-center gap-4 text-primary/80 hover:text-accent transition-colors group"
-                      whileHover={{ x: 4 }}
-                    >
-                      <div className="w-12 h-12 rounded-full bg-cream flex items-center justify-center group-hover:bg-accent/10 transition-colors">
-                        <FaPhone className="text-accent" size={18} />
-                      </div>
-                      <div>
-                        <p className="text-sm text-primary/60">Phone</p>
-                        <p className="font-body">{contactInfo.phone}</p>
-                      </div>
-                    </motion.a>
-
                     <div className="flex items-center gap-4 text-primary/80">
                       <div className="w-12 h-12 rounded-full bg-cream flex items-center justify-center">
                         <FaMapMarkerAlt className="text-accent" size={18} />
@@ -67,8 +53,8 @@ export function Contact() {
                 {/* Response Time */}
                 <div className="p-6 bg-cream rounded-sm">
                   <p className="text-primary/80 font-body text-sm">
-                    <span className="text-accent font-semibold">Quick Response:</span> I typically 
-                    respond to inquiries within 24 hours. For urgent requests, please call directly.
+                    <span className="text-accent font-semibold">Quick Response:</span> I typically
+                    respond to inquiries within 24 hours.
                   </p>
                 </div>
               </div>

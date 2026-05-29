@@ -4,6 +4,7 @@ export interface PricingPackage {
   price: string;
   description: string;
   features: string[];
+  deposit?: string;
   highlighted?: boolean;
   ctaText: string;
 }
@@ -21,6 +22,7 @@ export const pricingPackages: PricingPackage[] = [
       'Customizable setlist',
       'Phone consultation',
     ],
+    deposit: '$100 non-refundable',
     ctaText: 'Book Event',
   },
   {
@@ -35,6 +37,7 @@ export const pricingPackages: PricingPackage[] = [
       'Phone consultation',
       'One rehearsal attendance',
     ],
+    deposit: '$100 non-refundable',
     highlighted: true,
     ctaText: 'Book Ceremony',
   },
@@ -51,6 +54,7 @@ export const pricingPackages: PricingPackage[] = [
       'Recording sessions',
       'Collaborative performances',
     ],
+    deposit: '$100 non-refundable',
     ctaText: 'Get Quote',
   },
 ];

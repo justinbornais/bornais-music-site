@@ -97,13 +97,21 @@ export function Pricing() {
 
         {/* Note */}
         <AnimatedSection delay={0.5}>
-          <p className="text-center text-primary/60 text-sm mt-10 max-w-2xl mx-auto">
-            All packages include a consultation to discuss your specific needs. 
-            Travel fees may apply for locations outside the Windsor-Essex region. 
-            Full payment is required at least one week prior to the event date.
-            Payment is acceptable via e-transfer, cheque, or cash.
-            Custom packages are available upon request.
-          </p>
+          <ul className="mt-10 max-w-2xl mx-auto grid sm:grid-cols-2 gap-x-10 gap-y-3">
+            {[
+              'A $100 non-refundable deposit is required to officially book your date, applied toward the total cost.',
+              'All packages include a consultation to discuss your specific needs.',
+              'Travel fees may apply for locations outside the Windsor-Essex region.',
+              'Full payment is required at least one week prior to the event date.',
+              'Payment is accepted via e-transfer, cheque, or cash.',
+              'Custom packages are available upon request.',
+            ].map((note, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-primary/60">
+                <span className="text-accent flex-shrink-0 mt-0.5">•</span>
+                {note}
+              </li>
+            ))}
+          </ul>
         </AnimatedSection>
       </div>
     </section>
