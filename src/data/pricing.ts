@@ -7,6 +7,15 @@ export interface PricingPackage {
   deposit?: string;
   highlighted?: boolean;
   ctaText: string;
+  options?: PricingOption[];
+}
+
+export interface PricingOption {
+  name: string;
+  price: string;
+  description?: string;
+  features?: string[];
+  ctaText?: string;
 }
 
 export const pricingPackages: PricingPackage[] = [
@@ -26,20 +35,28 @@ export const pricingPackages: PricingPackage[] = [
     ctaText: 'Book Event',
   },
   {
-    id: 'ceremony',
-    name: 'Ceremony',
+    id: 'weddings',
+    name: 'Weddings',
     price: '$250',
-    description: 'Perfect for wedding ceremonies or memorial services',
+    description: 'Choose the option that best fits your wedding service',
     features: [
-      'Up to 1 hour of music',
       'Prelude & processional',
-      'Up to 6 song selections',
       'Phone consultation',
       'One rehearsal attendance',
     ],
     deposit: '$100 non-refundable',
     highlighted: true,
-    ctaText: 'Book Ceremony',
+    ctaText: 'Book Wedding Ceremony',
+    options: [
+      {
+        name: 'Wedding Ceremony',
+        price: '$250',
+      },
+      {
+        name: 'Ceremony + Full Catholic Mass',
+        price: '$300',
+      },
+    ],
   },
   {
     id: 'custom',
