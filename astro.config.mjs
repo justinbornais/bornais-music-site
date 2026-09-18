@@ -7,6 +7,14 @@ export default defineConfig({
     react(),
     tailwind(),
   ],
+
+  // Rebuild Vite's dependency cache on each dev-server start so stale
+  // optimized React/Astro modules cannot cause hydration failures.
+  vite: {
+    optimizeDeps: {
+      force: true,
+    },
+  },
   
   // =============================================================================
   // DEPLOYMENT CONFIGURATION

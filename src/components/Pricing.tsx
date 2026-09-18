@@ -14,8 +14,11 @@ export function Pricing() {
           subtitle="Transparent packages designed for every occasion"
         />
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
-          {pricingPackages.map((pkg, index) => (
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+          {pricingPackages.map((pkg, index) => {
+            const options = pkg.options ?? [pkg];
+
+            return (
             <AnimatedSection key={pkg.id} delay={index * 0.15}>
               <motion.div 
                 className={`relative h-full rounded-sm p-8 ${
@@ -33,66 +36,99 @@ export function Pricing() {
                   </div>
                 )}
 
-                {/* Card Content with min-h for desktop */}
                 <div className="flex flex-col flex-1 md:min-h-[420px]">
-                  {/* Package Name */}
-                  <h3 className={`text-xl font-heading font-semibold mb-2 ${
-                    pkg.highlighted ? 'text-white' : 'text-primary'
-                  }`}>
-                    {pkg.name}
-                  </h3>
+                  {pkg.options ? (
+                    <>
+                      <h3 className="text-xl font-heading font-semibold mb-2 text-white">
+                        {pkg.name}
+                      </h3>
+                      <p className="text-sm text-white/80 mb-6">
+                        {pkg.description}
+                      </p>
 
-                  {/* Price */}
-                  <div className="mb-4">
-                    <span className={`text-3xl font-heading font-bold ${
-                      pkg.highlighted ? 'text-accent-light' : 'text-accent'
-                    }`}>
-                      {pkg.price}
-                    </span>
-                  </div>
+                      {/* Wedding titles and prices */}
+                      <div className="space-y-5">
+                        {options.map((option, optionIndex) => (
+                          <div
+                            key={option.name}
+                            className={optionIndex > 0 ? 'border-t border-white/20 pt-5' : ''}
+                          >
+                            <h4 className="text-xl font-heading font-semibold text-white">
+                              {option.name}
+                            </h4>
+                            <span className="block text-3xl font-heading font-bold text-accent-light mt-1">
+                              {option.price}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
 
-                  {/* Description */}
-                  <p className={`text-sm mb-6 ${
-                    pkg.highlighted ? 'text-white/80' : 'text-primary/70'
-                  }`}>
-                    {pkg.description}
-                  </p>
+                      {/* Shared wedding details */}
+                      <div className="flex-1 mt-6 pt-6 border-t border-white/20">
+                        <p className="text-sm text-white/80 mb-4">
+                          Both options include:
+                        </p>
+                        <ul className="space-y-3 mb-6">
+                          {pkg.features.map((feature, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start gap-3 text-sm text-white/90"
+                            >
+                              <FaCheck className="flex-shrink-0 mt-0.5 text-accent-light" size={14} />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
 
-                  {/* Features aligned across cards */}
-                  <div className="flex-1 flex items-start">
-                    <ul className="space-y-3 mb-4 w-full md:min-h-[120px]">
-                      {pkg.features.map((feature, i) => (
-                        <li 
-                          key={i}
-                          className={`flex items-start gap-3 text-sm ${
-                            pkg.highlighted ? 'text-white/90' : 'text-primary/80'
-                          }`}
-                        >
-                          <FaCheck className={`flex-shrink-0 mt-0.5 ${
-                            pkg.highlighted ? 'text-accent-light' : 'text-accent'
-                          }`} size={14} />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                      <Button
+                        href="#contact"
+                        variant="primary"
+                        className="w-full bg-white text-primary hover:bg-cream"
+                      >
+                        Book Your Wedding
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <h3 className="text-xl font-heading font-semibold mb-2 text-primary">
+                        {pkg.name}
+                      </h3>
+
+                      <div className="mb-4">
+                        <span className="text-3xl font-heading font-bold text-accent">
+                          {pkg.price}
+                        </span>
+                      </div>
+
+                      <p className="text-sm text-primary/70 mb-6">
+                        {pkg.description}
+                      </p>
+
+                      <div className="flex-1 flex items-start">
+                        <ul className="space-y-3 mb-4 w-full md:min-h-[120px]">
+                          {pkg.features.map((feature, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start gap-3 text-sm text-primary/80"
+                            >
+                              <FaCheck className="flex-shrink-0 mt-0.5 text-accent" size={14} />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <Button href="#contact" variant="secondary" className="w-full">
+                        {pkg.ctaText}
+                      </Button>
+                    </>
+                  )}
                 </div>
-
-                {/* CTA Button */}
-                <Button 
-                  href="#contact"
-                  variant={pkg.highlighted ? 'primary' : 'secondary'}
-                  className={`w-full ${
-                    pkg.highlighted 
-                      ? 'bg-white text-primary hover:bg-cream' 
-                      : ''
-                  }`}
-                >
-                  {pkg.ctaText}
-                </Button>
               </motion.div>
             </AnimatedSection>
-          ))}
+            );
+          })}
         </div>
 
         {/* Note */}
